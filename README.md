@@ -21,3 +21,8 @@
 `npm install`
 4. Run the frontend dev build (serves at http://localhost:4200):   
 `npx ng serve --open`
+
+
+## Deployment:
+1. `npx ng add angular-cli-ghpages`
+2. `npx ng build --output-path ../docs-
