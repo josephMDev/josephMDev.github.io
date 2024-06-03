@@ -25,4 +25,5 @@
 
 ## Deployment:
 1. `npx ng add angular-cli-ghpages`
-2. `npx ng build --output-path ../docs-
+2. `npx ng build --output-path ../docs --base-href /josephMDev.github.io/ui/`
+3. git commit and git push for automatic deployment
