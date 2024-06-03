@@ -1,6 +1,7 @@
-import { Component, ViewChild, AfterViewInit, OnInit, ElementRef, Input } from '@angular/core';
+import { Component, ViewChild, AfterViewInit, OnInit, ElementRef, Input, Inject, PLATFORM_ID } from '@angular/core';
 import { After } from 'v8';
 import * as THREE from "three";
+import { isPlatformBrowser } from '@angular/common';
 import { PassThrough } from 'stream';
 
 @Component({
@@ -12,11 +13,11 @@ import { PassThrough } from 'stream';
 })
 export class CubeComponent implements OnInit, AfterViewInit{
   
-  constructor() { }
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   @ViewChild('canvas') private canvasRef!: ElementRef
 
-  @Input() public rotationSpeedX: number = 0.05;
+  @Input() public rotationSpeedX: number = 0.01;
 
   @Input() public rotationSpeedY: number = 0.01;
 
@@ -54,7 +55,9 @@ export class CubeComponent implements OnInit, AfterViewInit{
 
   ngAfterViewInit(): void {
       this.createScene();
-      this.startRenderingLoop();
+      if (isPlatformBrowser(this.platformId)) {
+        this.startRenderingLoop();
+      }
   }
 
   private createScene() {
