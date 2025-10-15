@@ -16,7 +16,7 @@ const technologies = [
 
 export const SkillsSection = () => {
   return (
-    <Section id="skills" className="py-20 bg-gray-50 dark:bg-gray-900 mb-20">
+    <Section id="skills" className="pt-10 pb-20 bg-gray-50 dark:bg-gray-900 mb-20">
       <div className="max-w-6xl mx-auto px-4">
         <SectionTitle
           title="Skills & Expertise"

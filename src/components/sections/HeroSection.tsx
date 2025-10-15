@@ -4,8 +4,17 @@ import { personalInfo } from '@/constants/portfolio-data';
 
 export const HeroSection = () => {
   return (
-    <Section id="home" className="min-h-screen flex items-center">
-      <div className="max-w-7xl mx-auto px-4 w-full">
+    <Section id="home" className="min-h-screen flex items-center relative overflow-hidden">
+      {/* Animated Gradient Orb - Mobile Background */}
+      <div className="absolute inset-0 flex items-center justify-center md:hidden pointer-events-none">
+        <div className="relative w-full h-full">
+          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl animate-float"></div>
+          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-gradient-to-tr from-secondary/25 to-accent/25 blur-2xl animate-float-delayed"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-gradient-to-br from-primary via-secondary to-accent opacity-15 blur-3xl animate-spin-slow"></div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 w-full relative z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left side - Content */}
           <div className="space-y-8 animate-slide-in-left">
@@ -63,17 +72,15 @@ export const HeroSection = () => {
             </div>
           </div>
           
-          {/* Right side - Placeholder Animation */}
+          {/* Right side - Animated Gradient Orb */}
           <div className="hidden md:flex items-center justify-center animate-slide-in-right">
-            <div className="relative w-full max-w-md aspect-square">
-              {/* Animated placeholder - you can replace this with your 3D animation */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 animate-pulse"></div>
-              <div className="absolute inset-8 rounded-full bg-gradient-to-tr from-primary/30 to-secondary/30 animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-              <div className="absolute inset-16 rounded-full bg-gradient-to-bl from-primary/40 to-secondary/40 animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="relative w-full h-[600px]">
+              {/* Floating gradient orbs */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl animate-float"></div>
+              <div className="absolute inset-12 rounded-full bg-gradient-to-tr from-secondary/40 to-accent/40 blur-2xl animate-float-delayed"></div>
+              <div className="absolute inset-24 rounded-full bg-gradient-to-bl from-accent/30 to-primary/30 blur-xl animate-float-slow"></div>
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-4xl font-bold shadow-2xl">
-                  {personalInfo.name.split(' ').map(word => word[0]).join('')}
-                </div>
+                <div className="w-96 h-96 rounded-full bg-gradient-to-br from-primary via-secondary to-accent opacity-20 blur-3xl animate-spin-slow"></div>
               </div>
             </div>
           </div>
