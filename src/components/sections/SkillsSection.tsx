@@ -11,7 +11,6 @@ const technologies = [
   { name: 'Swift', icon: '/swift-original.svg' },
   { name: 'C++', icon: '/cplusplus-original.svg' },
   { name: 'MongoDB', icon: '/mongodb-original.svg'},
-  { name: 'PostgreSQL', icon: '/postgresql-original.svg'},
 ];
 
 export const SkillsSection = () => {
@@ -31,11 +30,7 @@ export const SkillsSection = () => {
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-full h-full flex items-center justify-center transition-transform group-hover:scale-110 duration-300">
-                {tech.fallback ? (
-                  <div className="w-full h-full flex items-center justify-center bg-primary/10 dark:bg-primary/20 rounded-lg">
-                    <span className="text-2xl font-bold text-primary">{tech.fallback}</span>
-                  </div>
-                ) : (
+                {
                   <img
                     src={tech.icon}
                     alt={tech.name}
@@ -48,12 +43,7 @@ export const SkillsSection = () => {
                       }
                     }}
                   />
-                )}
-                {tech.fallback && (
-                  <div className="hidden w-full h-full items-center justify-center bg-primary/10 dark:bg-primary/20 rounded-lg">
-                    <span className="text-xl font-bold text-primary">{tech.fallback}</span>
-                  </div>
-                )}
+                }
               </div>
             </Card>
           ))}
