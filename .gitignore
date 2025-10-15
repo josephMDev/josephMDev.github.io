@@ -9,6 +9,12 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.npmrc
+
+# lock files (using pnpm)
+package-lock.json
+yarn.lock
+*lock.yaml*
 
 # testing
 /coverage

@@ -1,0 +1,78 @@
+# robots.txt - Block AI scrapers and aggressive crawlers
+
+# Block OpenAI's web crawler
+User-agent: GPTBot
+Disallow: /
+
+# Block ChatGPT user browsing
+User-agent: ChatGPT-User
+Disallow: /
+
+# Block Common Crawl (used by many AI models)
+User-agent: CCBot
+Disallow: /
+
+# Block Google's AI training crawler
+User-agent: Google-Extended
+Disallow: /
+
+# Block Anthropic's AI crawler
+User-agent: anthropic-ai
+Disallow: /
+
+# Block Claude AI crawler
+User-agent: Claude-Web
+Disallow: /
+
+# Block Omgilibot (used for data scraping)
+User-agent: omgilibot
+Disallow: /
+
+# Block Bytespider (TikTok/ByteDance crawler)
+User-agent: Bytespider
+Disallow: /
+
+# Block Facebook's crawler (Meta)
+User-agent: FacebookBot
+Disallow: /
+
+# Block other aggressive scrapers
+User-agent: PetalBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+# Allow legitimate search engines (for portfolio discoverability)
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+# Default: Allow legitimate crawlers, but with rate limiting
+User-agent: *
+Crawl-delay: 10
+Allow: /
+
+# Sitemap location (optional - create this if you add a sitemap)
+# Sitemap: https://josephmoraru.com/sitemap.xml
+
