@@ -32,7 +32,8 @@ body {
   background: var(--background);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Verdana, sans-serif;
   line-height: 1.6;
-  overflow-x: hidden;
+  min-width: 340px;
+  overflow-x: auto;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -209,20 +210,43 @@ body {
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - auto-hide */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--muted);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--primary);
+  background: transparent;
   border-radius: 5px;
+  transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--secondary);
+}
+
+/* Show scrollbar only when scrolling */
+html:hover::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+
+body::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+body:hover::-webkit-scrollbar-thumb {
+  background: var(--primary);
+}
+
+body:active::-webkit-scrollbar-thumb {
+  background: var(--primary);
 }

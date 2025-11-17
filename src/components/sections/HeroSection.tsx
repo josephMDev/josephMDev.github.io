@@ -1,37 +1,67 @@
+import { useState, useEffect } from 'react';
 import { Section } from '../ui/Section';
-import { Github, Linkedin, Mail, Download } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, Mail, Download } from 'lucide-react';
 import { personalInfo } from '@/constants/portfolio-data';
 
 export const HeroSection = () => {
-  return (
-    <Section id="home" className="min-h-screen flex items-center relative overflow-hidden">
-      {/* Animated Gradient Orb - Mobile Background */}
-      <div className="absolute inset-0 flex items-center justify-center md:hidden pointer-events-none">
-        <div className="relative w-full h-full">
-          <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl animate-float"></div>
-          <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-80 h-80 rounded-full bg-gradient-to-tr from-secondary/25 to-accent/25 blur-2xl animate-float-delayed"></div>
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 w-72 h-72 rounded-full bg-gradient-to-br from-primary via-secondary to-accent opacity-15 blur-3xl animate-spin-slow"></div>
-        </div>
-      </div>
+  const [displayedText, setDisplayedText] = useState('');
+  const [currentRole, setCurrentRole] = useState(0);
+  const [isDeleting, setIsDeleting] = useState(false);
+  
+  const roles = ['Software', 'AI', 'Software + AI'];
+  const pauseTimes = [15000, 10000, 15000]; // 30s, 10s, 15s
 
+  useEffect(() => {
+    const currentWord = roles[currentRole];
+    const typingSpeed = isDeleting ? 75 : 150;
+    const pauseTime = pauseTimes[currentRole];
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        // Typing
+        if (displayedText.length < currentWord.length) {
+          setDisplayedText(currentWord.slice(0, displayedText.length + 1));
+        } else {
+          // Finished typing, wait then start deleting
+          setTimeout(() => setIsDeleting(true), pauseTime);
+        }
+      } else {
+        // Deleting
+        if (displayedText.length > 0) {
+          setDisplayedText(displayedText.slice(0, -1));
+        } else {
+          // Finished deleting, move to next role
+          setIsDeleting(false);
+          setCurrentRole((prev) => (prev + 1) % roles.length);
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearTimeout(timer);
+  }, [displayedText, isDeleting, currentRole]);
+
+  return (
+    <Section id="home" className="pt-24 pb-12 md:pt-32 md:pb-16 flex items-center relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 w-full relative z-10">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           {/* Left side - Content */}
-          <div className="space-y-8 animate-slide-in-left">
-            <div className="space-y-4">
+          <div className="space-y-5 md:space-y-6 animate-slide-in-left text-center md:text-left w-full">
+            <div className="space-y-3">
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
                 Hi, I'm
               </p>
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white">
                 <span className="text-primary whitespace-nowrap">{personalInfo.name}</span>
               </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
-                {personalInfo.title}
+              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 min-h-[2rem] md:min-h-[2.5rem]">
+                {displayedText}
+                <span className="animate-pulse -ml-0.5 -mr-1">|</span>
+                {' Engineer'}
               </p>
             </div>
             
             {/* Social Links */}
-            <div className="flex space-x-4">
+            <div className="flex space-x-4 justify-center md:justify-start">
               <a
                 href={`mailto:${personalInfo.email}`}
                 className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary flex items-center justify-center transition-all hover:scale-110"
@@ -46,7 +76,7 @@ export const HeroSection = () => {
                 className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary flex items-center justify-center transition-all hover:scale-110"
                 aria-label="GitHub"
               >
-                <Github className="w-5 h-5" />
+                <GithubIcon className="w-5 h-5" />
               </a>
               <a
                 href={personalInfo.social.linkedin}
@@ -55,12 +85,12 @@ export const HeroSection = () => {
                 className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary flex items-center justify-center transition-all hover:scale-110"
                 aria-label="LinkedIn"
               >
-                <Linkedin className="w-5 h-5" />
+                <LinkedinIcon className="w-5 h-5" />
               </a>
             </div>
             
             {/* Resume Button */}
-            <div>
+            <div className="flex justify-center md:justify-start">
               <a
                 href={personalInfo.resume}
                 download
@@ -72,15 +102,20 @@ export const HeroSection = () => {
             </div>
           </div>
           
-          {/* Right side - Animated Gradient Orb */}
-          <div className="hidden md:flex items-center justify-center animate-slide-in-right">
-            <div className="relative w-full h-[600px]">
-              {/* Floating gradient orbs */}
-              <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/30 to-secondary/30 blur-3xl animate-float"></div>
-              <div className="absolute inset-12 rounded-full bg-gradient-to-tr from-secondary/40 to-accent/40 blur-2xl animate-float-delayed"></div>
-              <div className="absolute inset-24 rounded-full bg-gradient-to-bl from-accent/30 to-primary/30 blur-xl animate-float-slow"></div>
+          {/* Illustration - Shows on mobile (smaller) and desktop */}
+          <div className="flex items-center justify-center animate-slide-in-right w-full mt-6 md:mt-0">
+            <div className="relative w-full h-[220px] sm:h-[300px] md:h-[450px]">
+              {/* Background blur effects - hidden on mobile */}
+              <div className="hidden md:block absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl animate-float"></div>
+              <div className="hidden md:block absolute inset-12 rounded-full bg-gradient-to-tr from-secondary/30 to-accent/30 blur-2xl animate-float-delayed"></div>
+              
+              {/* Programming Illustration */}
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-96 h-96 rounded-full bg-gradient-to-br from-primary via-secondary to-accent opacity-20 blur-3xl animate-spin-slow"></div>
+                <img 
+                  src="/programming-pro.svg" 
+                  alt="Programming Workspace" 
+                  className="w-full h-full object-contain drop-shadow-2xl"
+                />
               </div>
             </div>
           </div>

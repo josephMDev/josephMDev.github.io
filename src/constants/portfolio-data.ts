@@ -12,11 +12,11 @@ export const personalInfo = {
   
   social: {
     github: "https://github.com/josephMDev",
-    linkedin: "https://linkedin.com/in/josephmoraru",
+    linkedin: "https://www.linkedin.com/in/joseph-moraru-443bb41b9/",
     twitter: "https://twitter.com/josephMDev",
   },
   
-  resume: "/resume.pdf", // Add your resume file to the public folder
+  resume: "/JosephMoraruResume.pdf", // Add your resume file to the public folder
 };
 
 export const skills = {

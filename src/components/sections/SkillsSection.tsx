@@ -11,18 +11,20 @@ const technologies = [
   { name: 'Swift', icon: '/swift-original.svg' },
   { name: 'C++', icon: '/cplusplus-original.svg' },
   { name: 'MongoDB', icon: '/mongodb-original.svg'},
+  { name: 'AWS', icon: '/amazonwebservices-plain-wordmark.svg'},
 ];
 
 export const SkillsSection = () => {
   return (
-    <Section id="skills" className="pt-10 pb-20 bg-gray-50 dark:bg-gray-900 mb-20">
-      <div className="max-w-6xl mx-auto px-4">
+    <Section id="skills" className="py-20">
+      <div className="max-w-7xl mx-auto px-4">
         <SectionTitle
           title="Skills & Expertise"
-          className="text-center mb-16"
+          center={false}
+          className="mb-12"
         />
         
-        <div className="flex flex-wrap justify-center items-center gap-6 md:gap-8">
+        <div className="flex flex-wrap justify-start items-center gap-4 md:gap-5">
           {technologies.map((tech, index) => (
             <Card
               key={tech.name}
