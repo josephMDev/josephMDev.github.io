@@ -41,7 +41,7 @@ export const HeroSection = () => {
   }, [displayedText, isDeleting, currentRole]);
 
   return (
-    <Section id="home" className="pt-24 pb-12 md:pt-32 md:pb-16 flex items-center relative overflow-hidden">
+    <Section id="home" className="pt-24 md:pt-32 pb-16 md:pb-20 flex items-center relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 w-full relative z-10">
         <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8 items-center">
           {/* Left side - Content */}

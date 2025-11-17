@@ -17,8 +17,8 @@ export const Section: React.FC<SectionProps> = ({
     <section
       id={id}
       className={`
-        py-20 px-6 
-        ${!fullWidth ? 'max-w-7xl mx-auto' : ''}
+        py-16 md:py-20
+        ${fullWidth ? 'w-full' : ''}
         ${className}
       `}
     >

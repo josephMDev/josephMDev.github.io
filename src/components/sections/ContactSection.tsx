@@ -5,7 +5,7 @@ import { personalInfo } from '@/constants/portfolio-data';
 
 export const ContactSection = () => {
   return (
-    <Section id="contact" className="py-20">
+    <Section id="contact">
       <div className="max-w-7xl mx-auto px-4">
         <SectionTitle
           title="Let's connect!"

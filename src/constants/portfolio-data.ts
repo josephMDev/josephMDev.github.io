@@ -16,7 +16,7 @@ export const personalInfo = {
     twitter: "https://twitter.com/josephMDev",
   },
   
-  resume: "/JosephMoraruResume.pdf", // Add your resume file to the public folder
+  resume: "/Joseph_Moraru_Resume.pdf", // Add your resume file to the public folder
 };
 
 export const skills = {

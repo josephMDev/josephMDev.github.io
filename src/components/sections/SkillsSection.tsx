@@ -16,7 +16,7 @@ const technologies = [
 
 export const SkillsSection = () => {
   return (
-    <Section id="skills" className="py-20">
+    <Section id="skills">
       <div className="max-w-7xl mx-auto px-4">
         <SectionTitle
           title="Skills & Expertise"
@@ -24,7 +24,7 @@ export const SkillsSection = () => {
           className="mb-12"
         />
         
-        <div className="flex flex-wrap justify-start items-center gap-4 md:gap-5">
+        <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-5">
           {technologies.map((tech, index) => (
             <Card
               key={tech.name}
