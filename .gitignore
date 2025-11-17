@@ -14,7 +14,7 @@
 # lock files (using pnpm)
 package-lock.json
 yarn.lock
-*lock.yaml*
+# pnpm-lock.yaml should be committed for reproducible builds
 
 # testing
 /coverage
