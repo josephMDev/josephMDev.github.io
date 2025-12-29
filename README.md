@@ -45,18 +45,6 @@ pnpm preview
 
 Preview your production build locally before deploying.
 
-## 📝 Customization
-
-See [PORTFOLIO_GUIDE.md](./PORTFOLIO_GUIDE.md) for detailed instructions on customizing your portfolio with your own information, projects, and styling.
-
-## Learn More
-
-To learn more about the technologies used:
-
-- [Vite Documentation](https://vitejs.dev/) - learn about Vite features and configuration
-- [React Documentation](https://react.dev/) - learn React
-- [TypeScript Documentation](https://www.typescriptlang.org/docs/) - learn TypeScript
-
 ## 🌐 Deployment
 
 This site is configured for GitHub Pages deployment. See the [PORTFOLIO_GUIDE.md](./PORTFOLIO_GUIDE.md) for detailed deployment instructions.
@@ -72,5 +60,4 @@ This site is configured for GitHub Pages deployment. See the [PORTFOLIO_GUIDE.md
 - **pnpm** - Package manager
 
 ## 📄 License
-
-Free to use and modify for your personal portfolio.
+All Rights Reserved (C) Joseph Moraru 2026
