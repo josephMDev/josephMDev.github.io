@@ -1,124 +1,67 @@
-import { useState, useEffect } from 'react';
 import { Section } from '../ui/Section';
-import { GithubIcon, LinkedinIcon, Mail, Download } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, Mail } from 'lucide-react';
 import { personalInfo } from '@/constants/portfolio-data';
 
 export const HeroSection = () => {
-  const [displayedText, setDisplayedText] = useState('');
-  const [currentRole, setCurrentRole] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
-  
-  const roles = ['Software', 'AI', 'Software + AI'];
-  const pauseTimes = [15000, 10000, 15000]; // 30s, 10s, 15s
-
-  useEffect(() => {
-    const currentWord = roles[currentRole];
-    const typingSpeed = isDeleting ? 75 : 150;
-    const pauseTime = pauseTimes[currentRole];
-
-    const timer = setTimeout(() => {
-      if (!isDeleting) {
-        // Typing
-        if (displayedText.length < currentWord.length) {
-          setDisplayedText(currentWord.slice(0, displayedText.length + 1));
-        } else {
-          // Finished typing, wait then start deleting
-          setTimeout(() => setIsDeleting(true), pauseTime);
-        }
-      } else {
-        // Deleting
-        if (displayedText.length > 0) {
-          setDisplayedText(displayedText.slice(0, -1));
-        } else {
-          // Finished deleting, move to next role
-          setIsDeleting(false);
-          setCurrentRole((prev) => (prev + 1) % roles.length);
-        }
-      }
-    }, typingSpeed);
-
-    return () => clearTimeout(timer);
-  }, [displayedText, isDeleting, currentRole]);
-
   return (
-    <Section id="home" className="pt-24 md:pt-32 pb-16 md:pb-20 flex items-center relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 w-full relative z-10">
-        <div className="flex flex-col md:grid md:grid-cols-2 gap-6 md:gap-8 items-center">
-          {/* Left side - Content */}
-          <div className="space-y-5 md:space-y-6 animate-slide-in-left text-center md:text-left w-full">
-            <div className="space-y-3">
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300">
-                Hi, I'm
-              </p>
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white">
-                <span className="text-primary whitespace-nowrap">{personalInfo.name}</span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 min-h-[2rem] md:min-h-[2.5rem]">
-                {displayedText}
-                <span className="animate-pulse -ml-0.5 -mr-1">|</span>
-                {' Engineer'}
-              </p>
-            </div>
-            
-            {/* Social Links */}
-            <div className="flex space-x-4 justify-center md:justify-start">
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary flex items-center justify-center transition-all hover:scale-110"
-                aria-label="Email"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-              <a
-                href={personalInfo.social.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary flex items-center justify-center transition-all hover:scale-110"
-                aria-label="GitHub"
-              >
-                <GithubIcon className="w-5 h-5" />
-              </a>
-              <a
-                href={personalInfo.social.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary flex items-center justify-center transition-all hover:scale-110"
-                aria-label="LinkedIn"
-              >
-                <LinkedinIcon className="w-5 h-5" />
-              </a>
-            </div>
-            
-            {/* Resume Button */}
-            <div className="flex justify-center md:justify-start">
-              <a
-                href={personalInfo.resume}
-                download
-                className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium"
-              >
-                <Download className="w-5 h-5" />
-                Resume
-              </a>
-            </div>
-          </div>
-          
-          {/* Illustration - Shows on mobile (smaller) and desktop */}
-          <div className="flex items-center justify-center animate-slide-in-right w-full mt-6 md:mt-0">
-            <div className="relative w-full h-[220px] sm:h-[300px] md:h-[450px]">
-              {/* Background blur effects - hidden on mobile */}
-              <div className="hidden md:block absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 blur-3xl animate-float"></div>
-              <div className="hidden md:block absolute inset-12 rounded-full bg-gradient-to-tr from-secondary/30 to-accent/30 blur-2xl animate-float-delayed"></div>
-              
-              {/* Programming Illustration */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <img 
-                  src="/programming-pro.svg" 
-                  alt="Programming Workspace" 
-                  className="w-full h-full object-contain drop-shadow-2xl"
-                />
-              </div>
-            </div>
-          </div>
+    <Section id="home" className="pt-24 md:pt-32 pb-16 md:pb-24 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 relative z-10">
+
+        {/* Status indicator */}
+        <div className="mb-10 md:mb-12">
+          <span className="inline-flex items-center gap-2.5 px-4 py-1.5 text-xs font-semibold tracking-[0.1em] uppercase border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400 rounded-full">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 flex-shrink-0" />
+            Currently at SuiteSpot
+          </span>
+        </div>
+
+        {/* Name — editorial display */}
+        <h1 className="font-black tracking-tight leading-[0.88] text-gray-900 dark:text-white mb-8"
+            style={{ fontSize: 'clamp(3rem, 12vw, 8rem)' }}>
+          Joseph<br />Moraru
+        </h1>
+
+        {/* Divider + role */}
+        <div className="flex items-center gap-5 mb-8">
+          <div className="w-12 h-[2px] bg-primary flex-shrink-0" />
+          <p className="text-base md:text-lg font-medium text-gray-500 dark:text-gray-400 tracking-wide">
+            Software + AI Engineer · Canada
+          </p>
+        </div>
+
+        {/* Tagline */}
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-xl leading-relaxed mb-10">
+          Building at the intersection of cloud, traditional software, and AI—
+          turning complex challenges into impactful products.
+        </p>
+
+        {/* Links */}
+        <div className="flex flex-wrap items-center gap-3">
+          <a
+            href={`mailto:${personalInfo.email}`}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors text-sm font-medium"
+          >
+            <Mail className="w-4 h-4" />
+            Email me
+          </a>
+          <a
+            href={personalInfo.social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-colors text-sm font-medium"
+          >
+            <GithubIcon className="w-4 h-4" />
+            GitHub
+          </a>
+          <a
+            href={personalInfo.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:border-primary hover:text-primary dark:hover:border-primary dark:hover:text-primary transition-colors text-sm font-medium"
+          >
+            <LinkedinIcon className="w-4 h-4" />
+            LinkedIn
+          </a>
         </div>
       </div>
     </Section>
