@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Section } from '../ui/Section';
-import { GithubIcon, LinkedinIcon, Mail, Download } from 'lucide-react';
+import { GithubIcon, LinkedinIcon, Mail } from 'lucide-react';
 import { personalInfo } from '@/constants/portfolio-data';
 
 export const HeroSection = () => {
@@ -86,18 +86,6 @@ export const HeroSection = () => {
                 aria-label="LinkedIn"
               >
                 <LinkedinIcon className="w-5 h-5" />
-              </a>
-            </div>
-            
-            {/* Resume Button */}
-            <div className="flex justify-center md:justify-start">
-              <a
-                href={personalInfo.resume}
-                download
-                className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium"
-              >
-                <Download className="w-5 h-5" />
-                Resume
               </a>
             </div>
           </div>
