@@ -11,7 +11,7 @@ export const HeroSection = () => {
   return (
     <section
       id="home"
-      className="mx-auto flex max-w-4xl flex-col items-start gap-10 px-4 pb-8 pt-16 sm:px-6 md:flex-row md:items-center md:justify-between md:gap-12 md:pb-10 md:pt-24"
+      className="mx-auto flex max-w-4xl flex-col items-start gap-10 px-4 pb-8 pt-16 sm:px-6 md:flex-row md:items-center md:gap-0 md:pb-10 md:pt-24"
     >
       <div>
         <p className="text-base text-muted">// {personalInfo.title}</p>
@@ -35,7 +35,10 @@ export const HeroSection = () => {
         </ul>
       </div>
 
-      <NetworkMotif className="w-full min-w-0 max-w-[15rem] shrink md:mr-24 md:w-56 md:max-w-none lg:w-64" />
+      {/* Below the links on mobile; centred between the end of the name and the column's right edge on wider screens */}
+      <div className="flex md:flex-1 md:justify-center">
+        <NetworkMotif className="w-60 shrink-0" />
+      </div>
     </section>
   );
 };

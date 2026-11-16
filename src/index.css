@@ -28,6 +28,20 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+/* Set briefly while the theme toggles so nothing animates between the two palettes */
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: none !important;
+}
+
+/* Crossfade between themes (see useTheme) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.4s;
+  animation-timing-function: ease;
+}
+
 ::selection {
   background: rgb(var(--ink) / 0.12);
 }
@@ -35,6 +49,23 @@ body {
 @layer components {
   .code-link {
     @apply underline decoration-rule decoration-1 underline-offset-4 hover:decoration-ink;
+  }
+}
+
+/* Clear the loss landscape around the margin diagrams, like halos around labels on a map.
+   Positions mirror the diagram boxes in App.tsx: nav ~4rem tall, footer ~6rem, margin = space beside the 56rem column. */
+@media (min-width: 1240px) {
+  .landscape-clearings {
+    --margin: calc((100vw - 56rem) / 2);
+    --edge-w: max(15rem, min(26rem, calc(var(--margin) * 0.9)));
+    --core-w: max(12.5rem, min(20rem, calc(var(--margin) * 0.8)));
+    --clearings:
+      radial-gradient(ellipse calc(var(--edge-w) * 0.72) calc(var(--edge-w) * 0.55) at calc(var(--margin) / 2) calc(4rem + var(--edge-w) * 0.36), transparent 45%, #000 100%),
+      radial-gradient(ellipse calc(var(--core-w) * 0.8) calc(var(--core-w) * 1.35) at calc(100% - var(--margin) / 2) calc(100% - 2.5rem - var(--core-w) * 1.08), transparent 45%, #000 100%);
+    -webkit-mask-image: var(--clearings);
+    mask-image: var(--clearings);
+    -webkit-mask-composite: source-in;
+    mask-composite: intersect;
   }
 }
 

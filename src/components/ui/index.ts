@@ -4,4 +4,5 @@ export { SectionTitle } from './SectionTitle';
 
 export { Note } from './Note';
 export { NetworkMotif } from './NetworkMotif';
-export { DiagramBackdrop } from './DiagramBackdrop';
+export { EdgeDiagram, CoreDiagram } from './DiagramBackdrop';
+export { LossLandscape } from './LossLandscape';

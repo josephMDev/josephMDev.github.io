@@ -61,7 +61,15 @@ export const NetworkMotif = ({ className = '' }: { className?: string }) => {
     hovered ? hovered.layer === layer && hovered.node === node : signal[layer] === node;
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} className={className} fill="none" aria-hidden="true">
+    <svg viewBox={`0 0 ${width} ${height}`} className={className} fill="none" overflow="visible" aria-hidden="true">
+      {/* Soft paper-coloured halo so background lines fade out behind the network */}
+      <defs>
+        <filter id="network-halo" x="-30%" y="-50%" width="160%" height="200%" colorInterpolationFilters="sRGB">
+          <feGaussianBlur stdDeviation="8" />
+        </filter>
+      </defs>
+      <rect x={2} y={-2} width={width - 4} height={height + 4} rx={20} className="fill-paper" opacity={0.85} filter="url(#network-halo)" />
+
       {edges.map(({ layer, from, to }) => (
         <line
           key={`${layer}-${from}-${to}`}
@@ -70,7 +78,7 @@ export const NetworkMotif = ({ className = '' }: { className?: string }) => {
           x2={x(layer + 1)}
           y2={y(layer + 1, to)}
           strokeWidth={1}
-          className={`transition-colors duration-[1500ms] ${edgeActive(layer, from, to) ? 'stroke-muted' : 'stroke-rule'}`}
+          className={`transition-colors duration-[1500ms] ${edgeActive(layer, from, to) ? 'stroke-ink/70' : 'stroke-muted/30'}`}
         />
       ))}
 
@@ -86,7 +94,7 @@ export const NetworkMotif = ({ className = '' }: { className?: string }) => {
               cy={y(layer, node)}
               r={4}
               strokeWidth={1.25}
-              className={`stroke-muted transition-colors duration-[1500ms] ${nodeActive(layer, node) ? 'fill-muted' : 'fill-paper'}`}
+              className={`transition-colors duration-[1500ms] ${nodeActive(layer, node) ? 'fill-ink stroke-ink' : 'fill-paper stroke-muted'}`}
             />
             <circle cx={x(layer)} cy={y(layer, node)} r={12} fill="transparent" />
           </g>
@@ -94,7 +102,7 @@ export const NetworkMotif = ({ className = '' }: { className?: string }) => {
       )}
 
       {!hovered && (
-        <circle key={cycle} r={2} className="fill-muted" opacity={0}>
+        <circle key={cycle} r={2} className="fill-ink" opacity={0}>
           <animateMotion
             ref={motionRef}
             path={pulsePath}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { flushSync } from 'react-dom';
 
 type Theme = 'light' | 'dark';
 
@@ -17,26 +18,39 @@ export const useTheme = () => {
 
   // Apply theme on mount and changes
   useEffect(() => {
+    const root = document.documentElement;
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
     }
     localStorage.setItem('theme', theme);
+
+    // Re-enable transitions once the new theme has painted
+    let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => root.classList.remove('theme-switching'));
+    });
+    return () => cancelAnimationFrame(frame);
   }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    
-    // Add a subtle page transition effect
-    document.body.style.transition = 'all 0.3s ease';
-    
-    setTheme(newTheme);
-    
-    // Reset transition after theme change
-    setTimeout(() => {
-      document.body.style.transition = '';
-    }, 300);
+    const next: Theme = theme === 'light' ? 'dark' : 'light';
+    const root = document.documentElement;
+
+    // Switch every colour at once instead of letting per-element transitions fade from the old theme
+    const apply = () => {
+      root.classList.add('theme-switching');
+      root.classList.toggle('dark', next === 'dark');
+      flushSync(() => setTheme(next));
+    };
+
+    // Crossfade the whole page between the two themes where the browser supports it
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!document.startViewTransition || reduceMotion) {
+      apply();
+      return;
+    }
+    document.startViewTransition(apply);
   };
 
   return { theme, toggleTheme };
