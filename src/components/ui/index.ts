@@ -4,3 +4,4 @@ export { SectionTitle } from './SectionTitle';
 
 export { Note } from './Note';
 export { NetworkMotif } from './NetworkMotif';
+export { DiagramBackdrop } from './DiagramBackdrop';
