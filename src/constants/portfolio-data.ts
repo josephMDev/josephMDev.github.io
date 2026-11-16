@@ -5,7 +5,7 @@ export const personalInfo = {
   name: "Joseph Moraru",
   title: "Software + AI Engineer",
   tagline: "Building elegant solutions to complex problems",
-  email: "jos.moraru@gmail.com",
+  email: "joe.alexmoraru@gmail.com",
   location: "Canada",
   bio: `Passionate full-stack developer with expertise in building modern web applications. 
         I love creating clean, efficient code and beautiful user experiences.`,
