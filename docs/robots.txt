@@ -1,0 +1,24 @@
+# robots.txt - Allow Google Search only; disallow all other crawlers, including AI training
+
+# Google Search (AI training is opted out separately via Google-Extended below)
+User-agent: Googlebot
+Content-Signal: search=yes, ai-input=no, ai-train=no
+Allow: /
+
+# Everyone else
+User-agent: *
+Content-Signal: search=no, ai-input=no, ai-train=no
+Disallow: /
+
+# AI training crawlers and opt-out tokens, listed explicitly
+User-agent: GPTBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: ClaudeBot
+User-agent: anthropic-ai
+User-agent: CCBot
+User-agent: meta-externalagent
+User-agent: Bytespider
+User-agent: Amazonbot
+User-agent: cohere-training-data-crawler
+Disallow: /
