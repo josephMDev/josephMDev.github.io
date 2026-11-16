@@ -2,6 +2,14 @@
 <html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
+    <!-- Apply the saved or system theme before first paint to avoid a light flash -->
+    <script>
+      try {
+        var theme = localStorage.getItem('theme') ||
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="alternate icon" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -29,12 +37,12 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="/assets/index-BPC7gDPb.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-BE8jBx8y.js"></script>
     <link rel="modulepreload" crossorigin href="/assets/vendor-BzGtyn9U.js">
     <link rel="modulepreload" crossorigin href="/assets/motion-BMQynDbN.js">
-    <link rel="modulepreload" crossorigin href="/assets/icons-Bzi7MAxu.js">
-    <link rel="stylesheet" crossorigin href="/assets/index-DvYetfzh.css">
+    <link rel="modulepreload" crossorigin href="/assets/icons-DzLhnzqJ.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-Cb7-MyTG.css">
   </head>
   <body>
     <div id="root"></div>
