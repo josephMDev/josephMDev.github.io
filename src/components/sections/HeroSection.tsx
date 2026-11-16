@@ -37,7 +37,14 @@ export const HeroSection = () => {
 
       {/* Below the links on mobile; centred between the end of the name and the column's right edge on wider screens */}
       <div className="flex md:flex-1 md:justify-center">
-        <NetworkMotif className="w-60 shrink-0" />
+        <div className="relative shrink-0">
+          {/* Soft clearing so the background contours fade out behind the network */}
+          <div
+            className="absolute -inset-x-8 -inset-y-6 bg-[radial-gradient(closest-side,rgb(var(--paper))_55%,transparent)]"
+            aria-hidden="true"
+          />
+          <NetworkMotif className="relative w-60" />
+        </div>
       </div>
     </section>
   );

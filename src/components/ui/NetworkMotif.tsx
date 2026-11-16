@@ -61,15 +61,7 @@ export const NetworkMotif = ({ className = '' }: { className?: string }) => {
     hovered ? hovered.layer === layer && hovered.node === node : signal[layer] === node;
 
   return (
-    <svg viewBox={`0 0 ${width} ${height}`} className={className} fill="none" overflow="visible" aria-hidden="true">
-      {/* Soft paper-coloured halo so background lines fade out behind the network */}
-      <defs>
-        <filter id="network-halo" x="-30%" y="-50%" width="160%" height="200%" colorInterpolationFilters="sRGB">
-          <feGaussianBlur stdDeviation="8" />
-        </filter>
-      </defs>
-      <rect x={2} y={-2} width={width - 4} height={height + 4} rx={20} className="fill-paper" opacity={0.85} filter="url(#network-halo)" />
-
+    <svg viewBox={`0 0 ${width} ${height}`} className={className} fill="none" aria-hidden="true">
       {edges.map(({ layer, from, to }) => (
         <line
           key={`${layer}-${from}-${to}`}
