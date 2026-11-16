@@ -2,14 +2,9 @@ import { Note } from '../ui/Note';
 
 export const AboutSection = () => {
   return (
-    <Note id="about" title="About Me">
-      <p className="text-pretty text-lg leading-relaxed">
-        With 3+ years of experience in software and AI engineering,
-        I've built solutions for organizations ranging from Bank of Montreal (BMO) to both pre-seed and funded startups.
-        Currently, I work at SuiteSpot where I focus on integrating AI technology into
-        an established proptech B2B SaaS platform.
-        I specialize at the intersection of cloud, traditional software, and AI,
-        turning complex challenges into impactful solutions.
+    <Note id="about" title="About">
+      <p className="text-balance leading-relaxed">
+        4+ years building production software and AI systems, from pre-seed startups to enterprise.
       </p>
     </Note>
   );

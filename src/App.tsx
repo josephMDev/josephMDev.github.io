@@ -3,18 +3,18 @@ import {
   HeroSection,
   AboutSection,
   SkillsSection,
-  ContactSection,
   Footer,
 } from './components/sections';
 
 function App() {
   return (
-    <main className="min-h-screen">
+    <main className="flex min-h-screen flex-col">
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <SkillsSection />
-      <ContactSection />
+      <div className="flex-1">
+        <HeroSection />
+        <AboutSection />
+        <SkillsSection />
+      </div>
       <Footer />
     </main>
   );

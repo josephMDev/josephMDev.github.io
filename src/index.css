@@ -22,8 +22,9 @@ html {
 }
 
 body {
-  @apply bg-paper text-ink font-sans antialiased;
+  @apply bg-paper text-ink font-mono antialiased;
   min-width: 340px;
+  font-size: 15px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
