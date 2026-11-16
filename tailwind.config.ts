@@ -15,7 +15,6 @@ export default {
         ink: token('ink'),
         muted: token('muted'),
         rule: token('rule'),
-        accent: token('accent'),
       },
       fontFamily: {
         sans: ['"IBM Plex Sans"', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],

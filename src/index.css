@@ -2,64 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Notebook palette, as RGB channels so Tailwind opacity modifiers work */
+/* Neutral palette, as RGB channels so Tailwind opacity modifiers work */
 :root {
-  --paper: 250 250 247;
+  --paper: 250 250 248;
   --ink: 29 31 33;
-  --muted: 110 114 118;
-  --rule: 218 218 211;
-  --accent: 31 122 76;
+  --muted: 112 116 120;
+  --rule: 226 226 222;
 }
 
 .dark {
-  --paper: 14 16 17;
-  --ink: 215 218 214;
-  --muted: 128 134 138;
-  --rule: 44 48 50;
-  --accent: 110 205 145;
+  --paper: 16 17 18;
+  --ink: 222 224 221;
+  --muted: 130 135 139;
+  --rule: 42 45 47;
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Faint dot grid, like engineering notebook paper */
 body {
   @apply bg-paper text-ink font-sans antialiased;
   min-width: 340px;
-  background-image: radial-gradient(rgb(var(--rule)) 1px, transparent 1px);
-  background-size: 24px 24px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
-  background: rgb(var(--accent) / 0.25);
+  background: rgb(var(--ink) / 0.12);
 }
 
 @layer components {
   .code-link {
-    @apply underline decoration-rule decoration-dashed decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent;
-  }
-}
-
-@layer utilities {
-  .cursor-blink {
-    animation: blink 1.1s steps(1) infinite;
-  }
-}
-
-@keyframes blink {
-  50% {
-    opacity: 0;
+    @apply underline decoration-rule decoration-1 underline-offset-4 hover:decoration-ink;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
-  }
-
-  .cursor-blink {
-    animation: none;
   }
 }

@@ -3,19 +3,17 @@ import { personalInfo } from '@/constants/portfolio-data';
 
 export const ContactSection = () => {
   return (
-    <Note id="contact" number="03" title="Let's connect!">
-      <p className="max-w-2xl text-pretty text-lg leading-relaxed md:text-xl">
+    <Note id="contact" title="Let's connect!">
+      <p className="text-pretty text-lg leading-relaxed">
         Feel free to send me an email, check out my GitHub, or reach out on LinkedIn!
       </p>
 
-      <p className="mt-10 break-words font-mono text-2xl font-medium tracking-tight sm:text-3xl md:text-4xl">
-        <span className="text-accent">→</span>{' '}
-        <a href={`mailto:${personalInfo.email}`} className="code-link">
-          {personalInfo.email}
-        </a>
-      </p>
-
-      <ul className="mt-8 flex gap-8 font-mono text-base">
+      <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-mono text-sm">
+        <li>
+          <a href={`mailto:${personalInfo.email}`} className="code-link">
+            {personalInfo.email}
+          </a>
+        </li>
         <li>
           <a href={personalInfo.social.github} target="_blank" rel="noopener noreferrer" className="code-link">
             GitHub
