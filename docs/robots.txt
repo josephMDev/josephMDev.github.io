@@ -1,6 +1,11 @@
-# robots.txt - Disallow all crawlers, including AI training
+# robots.txt - Allow Google Search only; disallow all other crawlers, including AI training
 
-# Opt out of AI training (Content Signals)
+# Google Search (AI training is opted out separately via Google-Extended below)
+User-agent: Googlebot
+Content-Signal: search=yes, ai-input=no, ai-train=no
+Allow: /
+
+# Everyone else
 User-agent: *
 Content-Signal: search=no, ai-input=no, ai-train=no
 Disallow: /
