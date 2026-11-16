@@ -1,52 +1,32 @@
-import { Section } from '../ui/Section';
-import { SectionTitle } from '../ui/SectionTitle';
-import { GithubIcon, LinkedinIcon, Mail } from 'lucide-react';
+import { Note } from '../ui/Note';
 import { personalInfo } from '@/constants/portfolio-data';
 
 export const ContactSection = () => {
   return (
-    <Section id="contact">
-      <div className="max-w-7xl mx-auto px-4">
-        <SectionTitle
-          title="Let's connect!"
-          center={false}
-          className="mb-8"
-        />
-        
-        <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed text-left mb-8">
-          Feel free to send me an email, check out my GitHub, or reach out on LinkedIn!
-        </p>
+    <Note id="contact" number="03" title="Let's connect!">
+      <p className="max-w-2xl text-pretty text-lg leading-relaxed md:text-xl">
+        Feel free to send me an email, check out my GitHub, or reach out on LinkedIn!
+      </p>
 
-        {/* Social Links */}
-        <div className="flex space-x-4">
-          <a
-            href={`mailto:${personalInfo.email}`}
-            className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary flex items-center justify-center transition-all hover:scale-110"
-            aria-label="Email"
-          >
-            <Mail className="w-5 h-5" />
+      <p className="mt-10 break-words font-mono text-2xl font-medium tracking-tight sm:text-3xl md:text-4xl">
+        <span className="text-accent">→</span>{' '}
+        <a href={`mailto:${personalInfo.email}`} className="code-link">
+          {personalInfo.email}
+        </a>
+      </p>
+
+      <ul className="mt-8 flex gap-8 font-mono text-base">
+        <li>
+          <a href={personalInfo.social.github} target="_blank" rel="noopener noreferrer" className="code-link">
+            GitHub
           </a>
-          <a
-            href={personalInfo.social.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary flex items-center justify-center transition-all hover:scale-110"
-            aria-label="GitHub"
-          >
-            <GithubIcon className="w-5 h-5" />
+        </li>
+        <li>
+          <a href={personalInfo.social.linkedin} target="_blank" rel="noopener noreferrer" className="code-link">
+            LinkedIn
           </a>
-          <a
-            href={personalInfo.social.linkedin}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-primary hover:text-white dark:hover:bg-primary flex items-center justify-center transition-all hover:scale-110"
-            aria-label="LinkedIn"
-          >
-            <LinkedinIcon className="w-5 h-5" />
-          </a>
-        </div>
-      </div>
-    </Section>
+        </li>
+      </ul>
+    </Note>
   );
 };
-
